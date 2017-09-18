@@ -7,7 +7,7 @@ import numpy as np
 from matplotlib import cm
 
 sample_rate, signal = scipy.io.wavfile.read('file.wav')  # File assumed to be in the same directory
-signal = signal[int(1*sample_rate):int(2 * sample_rate)]  # Keep the first 3.5 sec
+signal = signal[int(1*sample_rate):int(2 * sample_rate)]  # Keep the wave file from 1 to 2 sec
 
 #pre-emphasis filter on the signal to amplify the high frequencies (y(t)=x(t)-ax(t-1), keep a between 0.9 t0 1.0)
 #Three benefits of pre-emphasis:
@@ -87,10 +87,6 @@ mfcc= np.swapaxes(mfcc, 0 ,1)
 cax = ax1.imshow(mfcc, interpolation='nearest', cmap=cm.coolwarm, origin='lower')
 ax1.set_title('MFCC')
 plt.show()
-# Cepstral Mean Normalization
-
-mfcc -= (numpy.mean(mfcc, axis=0) + 1e-8)
-filter_banks -= (numpy.mean(filter_banks, axis=0) + 1e-8)
 
 
 
